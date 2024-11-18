@@ -1,0 +1,60 @@
+{
+  "games": [
+    {
+      "id": "polytrack",
+      "title": "Polytrack",
+      "description": "Race through challenging tracks in this exciting 3D racing game. Test your skills as you navigate through various obstacles and try to achieve the best time!",
+      "thumbnailUrl": "/images/games/polytrack.webp",
+      "gameUrl": "https://www.crazygames.com/embed/polytrack",
+      "category": "Racing",
+      "tags": ["racing", "3D", "skill", "arcade"],
+      "controls": {
+        "keyboard": true,
+        "mouse": false,
+        "touch": false
+      },
+      "author": {
+        "name": "CrazyGames",
+        "url": "https://www.crazygames.com"
+      }
+    },
+    {
+      "id": "mr-racer",
+      "title": "Mr Racer",
+      "description": "Experience high-speed racing action in Mr Racer. Compete against skilled opponents, unlock new cars, and become the ultimate racing champion!",
+      "thumbnailUrl": "/images/games/mr-racer.webp",
+      "gameUrl": "https://www.crazygames.com/embed/mr-racer---car-racing",
+      "category": "Racing",
+      "tags": ["racing", "cars", "competition"],
+      "controls": {
+        "keyboard": true,
+        "mouse": false,
+        "touch": true
+      },
+      "author": {
+        "name": "CrazyGames",
+        "url": "https://www.crazygames.com"
+      }
+    },
+    {
+      "id": "sky-riders",
+      "title": "Sky Riders",
+      "description": "Take to the skies in this thrilling racing game. Navigate through challenging aerial courses and compete against other pilots in intense multiplayer races!",
+      "thumbnailUrl": "/images/games/sky-riders.webp",
+      "gameUrl": "https://www.crazygames.com/embed/sky-riders-buk",
+      "category": "Racing",
+      "tags": ["racing", "flying", "multiplayer"],
+      "controls": {
+        "keyboard": true,
+        "mouse": false,
+        "touch": true
+      },
+      "author": {
+        "name": "CrazyGames",
+        "url": "https://www.crazygames.com"
+      }
+    }
+  ],
+  "categories": ["Racing", "Action", "Adventure", "Puzzle", "Strategy", "Multiplayer"],
+  "featuredGames": ["polytrack", "mr-racer", "sky-riders"]
+}
