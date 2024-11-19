@@ -209,10 +209,29 @@ export function GamePage({ initialGameId }: GamePageProps) {
           </div>
         </aside>
       </div>
-      <footer className="bg-background border-t mt-auto">
-        <div className="mx-auto max-w-7xl px-4 py-6 md:px-8">
-          <div className="text-center text-sm text-muted-foreground">
-            &copy; 2024 Game Portal. All rights reserved.
+      {/* Footer */}
+      <footer className="mt-12 border-t py-6">
+        <div className="container flex flex-col items-center gap-4 md:flex-row md:justify-between px-24">
+          <div className="flex items-center">
+            <span className="text-sm text-muted-foreground">
+              &copy; 2024 PolyTrack all rights reserved
+            </span>
+          </div>
+          <div className="flex items-center space-x-6">
+            <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-foreground">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-of-service" className="text-sm text-muted-foreground hover:text-foreground">
+              Terms of Service
+            </Link>
+            <a
+              href=""
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-foreground"
+            >
+              Polytrack.me
+            </a>
           </div>
         </div>
       </footer>
