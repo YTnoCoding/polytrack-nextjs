@@ -37,12 +37,13 @@ export default function GoogleAd({
   }, []);
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full min-h-[90px]">
       <ins
         ref={adRef}
         className={`adsbygoogle ${className || ''}`}
         style={{
           display: 'block',
+          minHeight: '90px',
           background: '#f4f4f5',
           ...style,
         }}
@@ -51,7 +52,7 @@ export default function GoogleAd({
         data-ad-format={format}
         data-full-width-responsive={responsive}
       />
-      <div className="absolute top-1 right-1 text-[10px] text-muted-foreground bg-background/80 px-1.5 py-0.5 rounded-sm select-none">
+      <div className="absolute top-0 right-0 bg-muted/80 px-2 py-0.5 text-[10px] text-muted-foreground">
         Advertisement
       </div>
     </div>

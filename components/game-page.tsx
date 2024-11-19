@@ -109,11 +109,12 @@ export function GamePage({ initialGameId }: GamePageProps) {
               <GameFrame game={game} />
             </div>
             {/* First Ad Placement - Game Banner */}
-            <div className="mt-8">
+            <div className="mt-8 min-h-[120px]">
               <GoogleAd
                 client="ca-pub-8190429661460302"
                 slot="6006140807"
                 className="w-full h-[120px]"
+                responsive={true}
               />
             </div>
             
@@ -174,11 +175,12 @@ export function GamePage({ initialGameId }: GamePageProps) {
               </div>
               
               {/* Vertical Banner Ad */}
-              <div>
+              <div className="min-h-[600px]">
                 <GoogleAd
                   client="ca-pub-8190429661460302"
                   slot="5868579434"
                   className="w-full h-[600px]"
+                  responsive={true}
                 />
               </div>
             </div>
@@ -196,11 +198,12 @@ export function GamePage({ initialGameId }: GamePageProps) {
         {/* Right Sidebar */}
         <aside className="hidden w-[336px] border-l p-4 lg:block">
           {/* Right Sidebar Ad */}
-          <div className="mb-6">
+          <div className="mb-6 min-h-[600px]">
             <GoogleAd
               client="ca-pub-8190429661460302"
-              slot="5738274425"
-              className="w-full h-[336px]"
+              slot="5868579434"
+              className="w-full h-[600px]"
+              responsive={true}
             />
           </div>
           <h2 className="font-semibold">Featured Games</h2>
