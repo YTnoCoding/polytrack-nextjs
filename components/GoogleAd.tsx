@@ -2,12 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 
-declare global {
-  interface Window {
-    adsbygoogle: any[];
-  }
-}
-
 interface GoogleAdProps {
   client: string;
   slot: string;
@@ -15,6 +9,12 @@ interface GoogleAdProps {
   responsive?: boolean;
   style?: React.CSSProperties;
   className?: string;
+}
+
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
 }
 
 export default function GoogleAd({
@@ -26,13 +26,33 @@ export default function GoogleAd({
   className,
 }: GoogleAdProps) {
   const adRef = useRef<HTMLModElement>(null);
+  const isInitialized = useRef(false);
 
   useEffect(() => {
+    // 避免重复初始化
+    if (isInitialized.current) {
+      return;
+    }
+
     try {
-      const adsbygoogle = window.adsbygoogle || [];
-      adsbygoogle.push({});
+      // 确保在客户端环境
+      if (typeof window !== 'undefined' && adRef.current) {
+        // 初始化广告
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        isInitialized.current = true;
+
+        // 添加错误处理
+        const handleError = (e: ErrorEvent) => {
+          if (e.target instanceof HTMLElement && adRef.current?.contains(e.target)) {
+            console.error('AdSense error:', e.error);
+          }
+        };
+
+        window.addEventListener('error', handleError);
+        return () => window.removeEventListener('error', handleError);
+      }
     } catch (err) {
-      console.error('Error loading ad:', err);
+      console.error('Error initializing ad:', err);
     }
   }, []);
 
