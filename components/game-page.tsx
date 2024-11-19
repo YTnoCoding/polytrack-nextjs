@@ -185,9 +185,9 @@ export function GamePage({ initialGameId }: GamePageProps) {
         </main>
 
         {/* Right Sidebar */}
-        <aside className="hidden w-[300px] border-l p-4 lg:block">
+        <aside className="hidden w-[336px] border-l p-4 lg:block">
           {/* Ad Placement */}
-          <div className="mb-6 w-full h-[250px] bg-muted flex items-center justify-center rounded-lg">
+          <div className="mb-6 w-full h-[336px] bg-muted flex items-center justify-center rounded-lg">
             <span className="text-muted-foreground">Advertisement</span>
           </div>
           <h2 className="font-semibold">Featured Games</h2>
