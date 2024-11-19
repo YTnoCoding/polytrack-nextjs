@@ -42,6 +42,7 @@ export function GamePage({ initialGameId }: GamePageProps) {
       <Link
         key={game.id}
         href={href}
+        prefetch={false}
         className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-muted"
       >
         <div className="absolute inset-0 bg-black/20 transition-opacity group-hover:opacity-0" />
@@ -69,7 +70,7 @@ export function GamePage({ initialGameId }: GamePageProps) {
             <Menu className="h-6 w-6" />
           </Button>
           <div className="flex items-center gap-2">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" prefetch={false} className="flex items-center gap-2">
               <Image
                 src="/logo.png"
                 alt="Logo"
@@ -217,10 +218,10 @@ export function GamePage({ initialGameId }: GamePageProps) {
             </span>
           </div>
           <div className="flex items-center space-x-6">
-            <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-foreground">
+            <Link href="/privacy-policy" prefetch={false} className="text-sm text-muted-foreground hover:text-foreground">
               Privacy Policy
             </Link>
-            <Link href="/terms-of-service" className="text-sm text-muted-foreground hover:text-foreground">
+            <Link href="/terms-of-service" prefetch={false} className="text-sm text-muted-foreground hover:text-foreground">
               Terms of Service
             </Link>
             <a
