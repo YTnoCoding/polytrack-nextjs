@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import GameFrame from './GameFrame'
+import GoogleAd from './GoogleAd'
 import gamesConfig from '@/config/games.json'
 import { Game } from '@/types/game'
 import { useCallback, useMemo } from 'react'
@@ -24,14 +25,16 @@ export function GamePage({ initialGameId }: GamePageProps) {
   }, [initialGameId])
 
   const featuredGames = useMemo(() => {
-    return gamesConfig.games.filter(g => gamesConfig.featuredGames.includes(g.id))
-  }, [])
+    return gamesConfig.games
+      .filter(g => g.id !== game.id)
+      .slice(0, 5);
+  }, [game.id]);
 
   const relatedGames = useMemo(() => {
     return gamesConfig.games
-      .filter(g => g.id !== game.id && g.category === game.category)
-      .slice(0, 5)
-  }, [game])
+      .filter(g => g.category === game.category && g.id !== game.id)
+      .slice(0, 5);
+  }, [game.category, game.id]);
 
   const renderGameCard = useCallback((game: Game) => {
     const href = game.id === gamesConfig.games[0].id ? '/' : `/${game.id}`
@@ -74,7 +77,7 @@ export function GamePage({ initialGameId }: GamePageProps) {
                 height={32}
                 className="rounded"
               />
-              <span className="text-xl font-bold">Game Portal</span>
+              <span className="text-xl font-bold">Polytrack</span>
             </Link>
           </div>
           <div className="ml-auto flex items-center gap-4">
@@ -104,76 +107,82 @@ export function GamePage({ initialGameId }: GamePageProps) {
             <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-muted">
               <GameFrame game={game} />
             </div>
-            {/* First Ad Placement */}
-            <div className="mt-8 w-full h-[120px] bg-muted flex items-center justify-center rounded-lg">
-              <span className="text-muted-foreground">Advertisement</span>
+            {/* First Ad Placement - Game Banner */}
+            <div className="mt-8">
+              <GoogleAd
+                client="ca-pub-8190429661460302"
+                slot="6006140807"
+                className="w-full h-[120px]"
+              />
             </div>
-            <div className="mt-6">
-              <div className="flex gap-6">
-                <div className="flex-1">
-                  <h1 className="text-3xl font-bold">{game.title}</h1>
-                  <div className="mt-4 flex items-center gap-4">
-                    <Button className="rounded-full px-8">Play Now</Button>
-                    <div className="flex items-center gap-2">
-                      <Button variant="ghost" size="icon">
-                        <Heart className="h-5 w-5" />
-                      </Button>
-                      <Button variant="ghost" size="icon">
-                        <Share2 className="h-5 w-5" />
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="mt-8 grid gap-6">
-                    <div>
-                      <h2 className="text-xl font-semibold">About the Game</h2>
-                      <p className="mt-2 text-muted-foreground">
-                        {game.description}
-                      </p>
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-semibold">Game Details</h2>
-                      <dl className="mt-2 grid gap-2 text-sm">
-                        <div className="grid grid-cols-2 gap-1">
-                          <dt className="font-medium">Category:</dt>
-                          <dd className="text-muted-foreground">{game.category}</dd>
-                        </div>
-                        <div className="grid grid-cols-2 gap-1">
-                          <dt className="font-medium">Developer:</dt>
-                          <dd className="text-muted-foreground">{game.author.name}</dd>
-                        </div>
-                        <div className="grid grid-cols-2 gap-1">
-                          <dt className="font-medium">Controls:</dt>
-                          <dd className="text-muted-foreground">
-                            {game.controls.keyboard && 'Keyboard'}
-                            {game.controls.mouse && ', Mouse'}
-                            {game.controls.touch && ', Touch'}
-                          </dd>
-                        </div>
-                      </dl>
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-semibold">How to Play</h2>
-                      <ol className="mt-2 list-decimal list-inside space-y-1 text-muted-foreground">
-                        <li>Use the arrow keys or WASD to control your vehicle</li>
-                        <li>Navigate through the track carefully</li>
-                        <li>Try to reach the finish line as fast as possible</li>
-                        <li>Avoid obstacles and stay on the track</li>
-                        <li>Challenge yourself to beat your best time</li>
-                      </ol>
-                    </div>
+            
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-[1fr_300px] gap-8">
+              {/* Game Info */}
+              <div>
+                <h1 className="text-2xl font-bold">{game.title}</h1>
+                <p className="mt-2 text-muted-foreground">{game.description}</p>
+                <div className="mt-4 flex items-center gap-4">
+                  <Button className="rounded-full px-8">Play Now</Button>
+                  <div className="flex items-center gap-2">
+                    <Button variant="ghost" size="icon">
+                      <Heart className="h-5 w-5" />
+                    </Button>
+                    <Button variant="ghost" size="icon">
+                      <Share2 className="h-5 w-5" />
+                    </Button>
                   </div>
                 </div>
-                {/* Vertical Ad Space */}
-                <div className="hidden w-[300px] lg:block">
-                  <div className="sticky top-4">
-                    <div className="w-full h-[600px] bg-muted flex items-center justify-center rounded-lg">
-                      <span className="text-muted-foreground">Advertisement</span>
-                    </div>
+                <div className="mt-8 grid gap-6">
+                  <div>
+                    <h2 className="text-xl font-semibold">About the Game</h2>
+                    <p className="mt-2 text-muted-foreground">
+                      {game.description}
+                    </p>
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-semibold">Game Details</h2>
+                    <dl className="mt-2 grid gap-2 text-sm">
+                      <div className="grid grid-cols-2 gap-1">
+                        <dt className="font-medium">Category:</dt>
+                        <dd className="text-muted-foreground">{game.category}</dd>
+                      </div>
+                      <div className="grid grid-cols-2 gap-1">
+                        <dt className="font-medium">Developer:</dt>
+                        <dd className="text-muted-foreground">{game.author.name}</dd>
+                      </div>
+                      <div className="grid grid-cols-2 gap-1">
+                        <dt className="font-medium">Controls:</dt>
+                        <dd className="text-muted-foreground">
+                          {game.controls.keyboard && 'Keyboard'}
+                          {game.controls.mouse && ', Mouse'}
+                          {game.controls.touch && ', Touch'}
+                        </dd>
+                      </div>
+                    </dl>
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-semibold">How to Play</h2>
+                    <ol className="mt-2 list-decimal list-inside space-y-1 text-muted-foreground">
+                      <li>Use the arrow keys or WASD to control your vehicle</li>
+                      <li>Navigate through the track carefully</li>
+                      <li>Try to reach the finish line as fast as possible</li>
+                      <li>Avoid obstacles and stay on the track</li>
+                      <li>Challenge yourself to beat your best time</li>
+                    </ol>
                   </div>
                 </div>
               </div>
+              
+              {/* Vertical Banner Ad */}
+              <div>
+                <GoogleAd
+                  client="ca-pub-8190429661460302"
+                  slot="5868579434"
+                  className="w-full h-[600px]"
+                />
+              </div>
             </div>
-
+            
             {/* Related Games */}
             <div className="mt-12">
               <h2 className="text-xl font-semibold">You May Also Like</h2>
@@ -186,9 +195,13 @@ export function GamePage({ initialGameId }: GamePageProps) {
 
         {/* Right Sidebar */}
         <aside className="hidden w-[336px] border-l p-4 lg:block">
-          {/* Ad Placement */}
-          <div className="mb-6 w-full h-[336px] bg-muted flex items-center justify-center rounded-lg">
-            <span className="text-muted-foreground">Advertisement</span>
+          {/* Right Sidebar Ad */}
+          <div className="mb-6">
+            <GoogleAd
+              client="ca-pub-8190429661460302"
+              slot="5738274425"
+              className="w-full h-[336px]"
+            />
           </div>
           <h2 className="font-semibold">Featured Games</h2>
           <div className="mt-4 grid gap-4">

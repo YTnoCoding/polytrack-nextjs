@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Game Portal",
-  description: "Play the best free online games at Game Portal",
+  title: "PolyTrack - 🎮 Play Free Online Games",
+  description: "Play PolyTrack, an exciting low-poly racing game featuring custom track creation, thrilling loops, and high-speed action. Challenge yourself in this TrackMania-inspired racing experience!",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -34,6 +36,13 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8190429661460302"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+        <GoogleAnalytics />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

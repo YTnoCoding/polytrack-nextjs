@@ -3,7 +3,7 @@
     {
       "id": "polytrack",
       "title": "Polytrack",
-      "description": "Race through challenging tracks in this exciting 3D racing game. Test your skills as you navigate through various obstacles and try to achieve the best time!",
+      "description": "PolyTrack is a fast-paced, low-poly driving game featuring thrilling loops, jumps, and high-speed action where every millisecond counts. Inspired by TrackMania, it challenges you to race against the clock, constantly striving to improve your time on various tracks built by you and the Polytrack community!",
       "thumbnailUrl": "/images/games/polytrack.webp",
       "gameUrl": "https://www.crazygames.com/embed/polytrack",
       "category": "Racing",
@@ -12,6 +12,78 @@
         "keyboard": true,
         "mouse": false,
         "touch": false
+      },
+      "author": {
+        "name": "CrazyGames",
+        "url": "https://www.crazygames.com"
+      }
+    },
+    {
+      "id": "gt-cars-mega-ramps",
+      "title": "GT Cars Mega Ramps",
+      "description": "Experience the thrill of high-speed stunt driving in GT Cars Mega Ramps. Take control of powerful GT cars and master epic mega ramps filled with challenging obstacles, insane jumps, and gravity-defying loops. Test your driving skills across various tracks and perform incredible stunts!",
+      "thumbnailUrl": "/images/games/gt-cars-mega-ramps.webp",
+      "gameUrl": "https://www.crazygames.com/embed/gt-cars-mega-ramps",
+      "category": "Racing",
+      "tags": ["racing", "3D", "stunts", "cars"],
+      "controls": {
+        "keyboard": true,
+        "mouse": false,
+        "touch": true
+      },
+      "author": {
+        "name": "CrazyGames",
+        "url": "https://www.crazygames.com"
+      }
+    },
+    {
+      "id": "demolition-derby-3",
+      "title": "Demolition Derby 3",
+      "description": "Jump into the chaotic world of Demolition Derby 3, where destruction meets racing! Customize your vehicle, compete in intense derby matches, and be the last car standing. With realistic physics, detailed damage models, and various game modes, every match is an explosive adventure!",
+      "thumbnailUrl": "/images/games/demolition-derby-3.webp",
+      "gameUrl": "https://www.crazygames.com/embed/demolition-derby-3",
+      "category": "Racing",
+      "tags": ["racing", "3D", "destruction", "cars"],
+      "controls": {
+        "keyboard": true,
+        "mouse": false,
+        "touch": true
+      },
+      "author": {
+        "name": "CrazyGames",
+        "url": "https://www.crazygames.com"
+      }
+    },
+    {
+      "id": "smash-karts",
+      "title": "Smash Karts",
+      "description": "Race and battle in Smash Karts, a multiplayer kart racing game with weapons! Drive your kart, collect power-ups, and blast your opponents while avoiding getting destroyed yourself. With simple controls but deep gameplay, every race is an action-packed battle for survival!",
+      "thumbnailUrl": "/images/games/smash-karts.webp",
+      "gameUrl": "https://www.crazygames.com/embed/smash-karts",
+      "category": "Racing",
+      "tags": ["racing", "3D", "battle", "multiplayer"],
+      "controls": {
+        "keyboard": true,
+        "mouse": true,
+        "touch": true
+      },
+      "author": {
+        "name": "CrazyGames",
+        "url": "https://www.crazygames.com"
+      }
+    },
+    {
+      "id": "demolition-derby-2",
+      "title": "Demolition Derby 2",
+      "description": "Enter the arena in Demolition Derby 2, where only the toughest cars survive! Crash, smash, and battle your way through intense derby matches with upgraded graphics and improved physics from the original. Choose from various vehicles, customize them, and compete in different game modes!",
+      "thumbnailUrl": "/images/games/demolition-derby-2.webp",
+      "gameUrl": "https://www.crazygames.com/embed/demolition-derby-2",
+      "category": "Racing",
+      "tags": ["racing", "3D", "destruction", "cars"],
+      "controls": {
+        "keyboard": true,
+        "mouse": false,
+        "touch": true
       },
       "author": {
         "name": "CrazyGames",
@@ -56,5 +128,5 @@
     }
   ],
   "categories": ["Racing", "Action", "Adventure", "Puzzle", "Strategy", "Multiplayer"],
-  "featuredGames": ["polytrack", "mr-racer", "sky-riders"]
+  "featuredGames": ["polytrack", "gt-cars-mega-ramps", "smash-karts"]
 }
