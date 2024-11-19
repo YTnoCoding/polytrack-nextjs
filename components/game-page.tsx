@@ -120,7 +120,6 @@ export function GamePage({ initialGameId }: GamePageProps) {
               {/* Game Info */}
               <div>
                 <h1 className="text-2xl font-bold">{game.title}</h1>
-                <p className="mt-2 text-muted-foreground">{game.description}</p>
                 <div className="mt-4 flex items-center gap-4">
                   <Button className="rounded-full px-8">Play Now</Button>
                   <div className="flex items-center gap-2">
