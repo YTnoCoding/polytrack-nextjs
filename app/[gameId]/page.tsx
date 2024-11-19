@@ -25,23 +25,23 @@ export async function generateMetadata({ params }: GamePageProps): Promise<Metad
 
   if (!game) {
     return {
-      title: 'Game Not Found - Game Portal',
+      title: 'Game Not Found',
       description: 'The requested game could not be found.',
     };
   }
 
   return {
-    title: `${game.title} - Play Free Online at Game Portal`,
+    title: `${game.title} - Play Free Online`,
     description: game.description,
     openGraph: {
-      title: `Play ${game.title} Online - Free at Game Portal`,
+      title: `Play ${game.title} Online for Free`,
       description: game.description,
       images: [{ url: game.thumbnailUrl }],
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Play ${game.title} Online - Free at Game Portal`,
+      title: `Play ${game.title} Online for Free`,
       description: game.description,
       images: [game.thumbnailUrl],
     },
