@@ -5,7 +5,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 本地开发使用 localhost，生产环境使用实际域名
   const baseUrl = process.env.NODE_ENV === 'development' 
     ? 'http://localhost:3000'
-    : 'https://gameportal.com'
+    : 'https://polytrack.me'
 
   const currentDate = new Date().toISOString()
 
