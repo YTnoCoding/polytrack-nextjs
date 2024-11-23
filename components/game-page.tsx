@@ -1,6 +1,6 @@
 'use client';
 
-import { Bell, Heart, Menu, Search, Share2 } from 'lucide-react'
+import { Bell, Heart, Menu, Search, Share2, Shuffle } from 'lucide-react'
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from 'next/navigation'
@@ -81,7 +81,25 @@ export function GamePage({ initialGameId }: GamePageProps) {
               <span className="text-xl font-bold">Polytrack</span>
             </Link>
           </div>
-          <div className="ml-auto flex items-center gap-4">
+          
+          {/* Center section */}
+          <div className="flex-1 flex justify-center items-center">
+            <Button 
+              variant="ghost" 
+              onClick={() => {
+                const games = gamesConfig.games;
+                const randomGame = games[Math.floor(Math.random() * games.length)];
+                const href = randomGame.id === gamesConfig.games[0].id ? '/' : `/${randomGame.id}`;
+                router.push(href);
+              }}
+              className="hidden md:flex items-center gap-2"
+            >
+              <Shuffle className="h-5 w-5" />
+              Random Game
+            </Button>
+          </div>
+
+          <div className="flex items-center gap-4">
             <div className="relative hidden md:block">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
