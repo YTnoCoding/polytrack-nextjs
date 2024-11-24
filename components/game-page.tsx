@@ -4,6 +4,7 @@ import { Bell, Heart, Menu, Search, Share2, Shuffle } from 'lucide-react'
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from 'next/navigation'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -11,7 +12,6 @@ import GameFrame from './GameFrame'
 import GoogleAd from './GoogleAd'
 import gamesConfig from '@/config/games.json'
 import { Game } from '@/types/game'
-import { useCallback, useMemo } from 'react'
 
 interface GamePageProps {
   initialGameId: string
@@ -35,6 +35,23 @@ export function GamePage({ initialGameId }: GamePageProps) {
       .filter(g => g.category === game.category && g.id !== game.id)
       .slice(0, 5);
   }, [game.category, game.id]);
+
+  const [gameContent, setGameContent] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function loadGameContent() {
+      try {
+        const response = await fetch(`/api/game-content/${game.id}`);
+        if (response.ok) {
+          const data = await response.json();
+          setGameContent(data.contentHtml);
+        }
+      } catch (error) {
+        console.error('Failed to load game content:', error);
+      }
+    }
+    loadGameContent();
+  }, [game.id]);
 
   const renderGameCard = useCallback((game: Game) => {
     const href = game.id === gamesConfig.games[0].id ? '/' : `/${game.id}`
@@ -179,16 +196,12 @@ export function GamePage({ initialGameId }: GamePageProps) {
                       </div>
                     </dl>
                   </div>
-                  <div>
-                    <h2 className="text-xl font-semibold">How to Play</h2>
-                    <ol className="mt-2 list-decimal list-inside space-y-1 text-muted-foreground">
-                      <li>Use the arrow keys or WASD to control your vehicle</li>
-                      <li>Navigate through the track carefully</li>
-                      <li>Try to reach the finish line as fast as possible</li>
-                      <li>Avoid obstacles and stay on the track</li>
-                      <li>Challenge yourself to beat your best time</li>
-                    </ol>
-                  </div>
+                  {gameContent && (
+                    <div className="prose prose-invert max-w-none">
+                      <div dangerouslySetInnerHTML={{ __html: gameContent }} />
+                    </div>
+                  )}
+                 
                 </div>
               </div>
               
