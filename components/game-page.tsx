@@ -4,7 +4,7 @@ import { Bell, Heart, Menu, Search, Share2, Shuffle } from 'lucide-react'
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from 'next/navigation'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo } from 'react'
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,12 +12,14 @@ import GameFrame from './GameFrame'
 import GoogleAd from './GoogleAd'
 import gamesConfig from '@/config/games.json'
 import { Game } from '@/types/game'
+import { GameContent } from '@/lib/markdown'
 
 interface GamePageProps {
-  initialGameId: string
+  initialGameId: string;
+  initialContent: GameContent;
 }
 
-export function GamePage({ initialGameId }: GamePageProps) {
+export function GamePage({ initialGameId, initialContent }: GamePageProps) {
   const router = useRouter()
   
   const game = useMemo(() => {
@@ -35,23 +37,6 @@ export function GamePage({ initialGameId }: GamePageProps) {
       .filter(g => g.category === game.category && g.id !== game.id)
       .slice(0, 5);
   }, [game.category, game.id]);
-
-  const [gameContent, setGameContent] = useState<string | null>(null);
-
-  useEffect(() => {
-    async function loadGameContent() {
-      try {
-        const response = await fetch(`/api/game-content/${game.id}`);
-        if (response.ok) {
-          const data = await response.json();
-          setGameContent(data.contentHtml);
-        }
-      } catch (error) {
-        console.error('Failed to load game content:', error);
-      }
-    }
-    loadGameContent();
-  }, [game.id]);
 
   const renderGameCard = useCallback((game: Game) => {
     const href = game.id === gamesConfig.games[0].id ? '/' : `/${game.id}`
@@ -98,7 +83,6 @@ export function GamePage({ initialGameId }: GamePageProps) {
               <span className="text-xl font-bold">Polytrack</span>
             </Link>
           </div>
-          
           {/* Center section */}
           <div className="flex-1 flex justify-center items-center">
             <Button 
@@ -196,12 +180,11 @@ export function GamePage({ initialGameId }: GamePageProps) {
                       </div>
                     </dl>
                   </div>
-                  {gameContent && (
-                    <div className="prose prose-invert max-w-none">
-                      <div dangerouslySetInnerHTML={{ __html: gameContent }} />
+                  {initialContent && (
+                    <div className="mt-8 px-4">
+                      <div dangerouslySetInnerHTML={{ __html: initialContent.contentHtml }} className="prose prose-invert max-w-none" />
                     </div>
                   )}
-                 
                 </div>
               </div>
               

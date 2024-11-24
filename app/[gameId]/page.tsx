@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { GamePage } from '@/components/game-page';
 import gamesConfig from '@/config/games.json';
+import { getGameContent } from '@/lib/markdown';
 
 interface GamePageProps {
   params: {
@@ -48,7 +49,7 @@ export async function generateMetadata({ params }: GamePageProps): Promise<Metad
   };
 }
 
-export default function Page({ params }: GamePageProps) {
+export default async function Page({ params }: GamePageProps) {
   // 如果是默认游戏，返回 404，因为默认游戏应该在首页访问
   if (params.gameId === gamesConfig.games[0].id) {
     notFound();
@@ -59,5 +60,7 @@ export default function Page({ params }: GamePageProps) {
     notFound();
   }
 
-  return <GamePage initialGameId={params.gameId} />;
+  const gameContent = await getGameContent(params.gameId);
+
+  return <GamePage initialGameId={params.gameId} initialContent={gameContent} />;
 }
