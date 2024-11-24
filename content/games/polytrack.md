@@ -24,7 +24,7 @@ Remember, in Polytrack, perfection is key. Every run is an opportunity to improv
 ## Frequently Asked Questions
 
 ### Q: Why can't I control my car in the air?
-A: Air control in Polytrack requires practice. Make sure to adjust your car's rotation before leaving the ground, and use subtle movements while airborne. The more speed you have, the more control you'll have in the air.
+A: Air control in Polytrack requires practice. Make sure to adjust your car's rotation before leaving the ground.
 
 ### Q: How do I perform a perfect drift?
 A: To perform a perfect drift:
