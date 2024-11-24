@@ -21,12 +21,12 @@
 
 Remember, in Polytrack, perfection is key. Every run is an opportunity to improve your time and climb the global leaderboards!
 
-## Frequently Asked Questions
+## Frequently Asked Questions About Polytrack
 
 ### Q: Why can't I control my car in the air?
 A: Air control in Polytrack requires practice. Make sure to adjust your car's rotation before leaving the ground.
 
-### Q: How do I perform a perfect drift?
+### Q: How do I perform a perfect drift in Polytrack?
 A: To perform a perfect drift:
 1. Approach the corner at the right speed
 2. Press and hold the spacebar (handbrake)
@@ -34,7 +34,7 @@ A: To perform a perfect drift:
 4. Release the handbrake gradually to maintain control
 5. Accelerate out of the drift when your car is pointing in the desired direction
 
-### Q: What's the best way to improve my times?
+### Q: What's the best way to improve my Polytrack times?
 A: To improve your times:
 - Watch and learn from top players' replays
 - Break down difficult sections and practice them individually
@@ -49,12 +49,12 @@ A: Checkpoints in Polytrack require your car to pass through them at the correct
 - Avoid extreme angles when crossing checkpoints
 - Watch for checkpoint indicators to confirm registration
 
-### Q: How does the ranking system work?
+### Q: How does the Polytrack ranking system work?
 A: The ranking system is based on:
 - Your best time on each track
 - Consistency across different track types
 - Performance relative to other players
 - Participation in official events
-- Regular improvement in times
+- Regular improvement in Polytrack times
 
 
